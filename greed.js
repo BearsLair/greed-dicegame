@@ -13,7 +13,7 @@ function score(dice) {
     one5: 50,
   };
 
-  let score = 0;
+  let finalScore = 0;
 
   let ones = [];
   let twos = [];
@@ -45,31 +45,39 @@ function score(dice) {
     }
   });
 
-  if ((ones.length = 3)) {
-    total += scoringValues.threeOnes;
+  if (ones.length >= 3) {
+    finalScore += scoringValues.threeOnes;
   }
 
   if ((twos.length = 3)) {
-    total += scoringValues.threeTwos;
+    finalScore += scoringValues.threeTwos;
   }
 
   if ((threes.length = 3)) {
-    total += scoringValues.threeThrees;
+    finalScore += scoringValues.threeThrees;
   }
 
   if ((fours.length = 3)) {
-    total += scoringValues.threeFours;
+    finalScore += scoringValues.threeFours;
   }
 
-  if ((fives.length = 3)) {
-    total += scoringValues.threeFives;
+  if (fives.length >= 3) {
+    finalScore += scoringValues.threeFives;
   }
 
   if ((sixes.length = 3)) {
-    total += scoringValues.threeSixes;
+    finalScore += scoringValues.threeSixes;
   }
 
-  return total;
+  if (ones.length > 3 || ones.length < 3) {
+    finalScore += scoringValues.one1;
+  }
+
+  if (fives.length > 3 || fives.length < 3) {
+    finalScore += scoringValues.one1;
+  }
+
+  return finalScore;
 }
 
 // console.log(score([2, 3, 4, 6, 2])); // 0
