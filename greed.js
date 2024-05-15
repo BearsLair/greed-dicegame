@@ -1,6 +1,3 @@
-// 1. use map method on dice
-//
-
 function score(dice) {
   const scoringValues = {
     threeOnes: 1000,
@@ -49,42 +46,42 @@ function score(dice) {
 
   if (ones.length >= 3) {
     finalScore += scoringValues.threeOnes;
-    console.log(finalScore);
   }
 
-  if (twos.length === 3) {
+  if (twos.length >= 3) {
     finalScore += scoringValues.threeTwos;
-    console.log(finalScore);
   }
 
-  if (threes.length === 3) {
+  if (threes.length >= 3) {
     finalScore += scoringValues.threeThrees;
-    console.log(finalScore);
   }
 
-  if (fours.length === 3) {
+  if (fours.length >= 3) {
     finalScore += scoringValues.threeFours;
-    console.log(finalScore);
   }
 
   if (fives.length >= 3) {
     finalScore += scoringValues.threeFives;
-    console.log(finalScore);
   }
 
-  if (sixes.length === 3) {
+  if (sixes.length >= 3) {
     finalScore += scoringValues.threeSixes;
-    console.log(finalScore);
   }
 
   if (ones.length > 3 || (ones.length < 3 && ones.length > 0)) {
-    finalScore += scoringValues.one1;
-    console.log(finalScore);
+    if (ones.length < 3) {
+      finalScore += scoringValues.one1 * ones.length;
+    } else if (ones.length > 3) {
+      finalScore += scoringValues.one1 * (ones.length - 3);
+    }
   }
 
   if (fives.length > 3 || (fives.length < 3 && fives.length > 0)) {
-    finalScore += scoringValues.one5;
-    console.log(finalScore);
+    if (fives.length < 3) {
+      finalScore += scoringValues.one5 * fives.length;
+    } else if (fives.length > 3) {
+      finalScore += scoringValues.one5 * (fives.length - 3);
+    }
   }
 
   return finalScore;
@@ -96,3 +93,7 @@ console.log(score([2, 4, 4, 5, 4])); // 450
 console.log(score([5, 1, 3, 4, 1])); // 250
 console.log(score([1, 1, 1, 3, 1])); // 1100
 console.log(score([3, 1, 3, 3, 5])); // 450
+
+console.log(score([2, 2, 2, 2, 3])); // 200
+console.log(score([2, 2, 2, 2, 2])); // 200
+console.log(score([5, 5, 5, 2, 5])); // 550
