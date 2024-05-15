@@ -42,8 +42,6 @@ function score(dice) {
     }
   });
 
-  console.log(ones, " ", twos, " ", threes, " ", fours, " ", fives, " ", sixes);
-
   if (ones.length >= 3) {
     finalScore += scoringValues.threeOnes;
   }
